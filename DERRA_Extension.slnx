@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="DERRA_Extension.vbproj" Id="10c0cd5d-5b73-4851-83c8-c7fca5619706">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+</Solution>
