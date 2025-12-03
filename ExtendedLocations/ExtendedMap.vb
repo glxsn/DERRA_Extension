@@ -2,7 +2,7 @@
 Imports GTA.Math
 Imports System.Reflection
 
-Namespace DERRA.Extension
+Namespace DERRA.Extension.ExtendedLocations
     ''' <summary>
     ''' 扩展任务地点 - 自动注入到原版 DERRA
     ''' </summary>
@@ -36,7 +36,7 @@ Namespace DERRA.Extension
         ''' </summary>
         Private Sub InjectMissionPoints()
             Try
-                ' 获取原版 Map 类（它会在hook加载成功前加载，提示字段无法正常显示）
+                ' 获取原版 Map 类
                 Dim mapType = Type.GetType("DERRA.Map, DERRA")
                 If mapType Is Nothing Then
                     UI.Notification.PostTicker("~r~DERRA Extension: 未找到原版 Map 类", True) '过时的引用替换为此版本推荐的
@@ -69,7 +69,7 @@ Namespace DERRA.Extension
                 ' 添加扩展地点
                 AddExtendedPoints(originalPoints)
 
-                ' 确认注入成功(一样，它会在hook加载成功前加载，所以这段不会显示)
+                ' 确认注入成功
                 Dim newCount = originalPoints.Count
                 UI.Notification.PostTicker($"~g~DERRA Extension 已加载~n~" &
                                     $"~w~原有地点: {originalCount}~n~" &
