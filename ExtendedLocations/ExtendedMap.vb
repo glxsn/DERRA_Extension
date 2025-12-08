@@ -11,6 +11,7 @@ Namespace DERRA.Extension.ExtendedLocations
 
         Private Shared injected As Boolean = False
         Private firstTick As Boolean = False
+        Private notificationTime As Integer = 0
 
         Public Sub New()
             ' 脚本加载时自动注入
@@ -25,9 +26,14 @@ Namespace DERRA.Extension.ExtendedLocations
         Private Sub OnTick(sender As Object, e As EventArgs)
             If Not firstTick Then
                 firstTick = True
-                UI.Notification.PostTicker("~g~DERRA Extension 已激活", False)  '过时的引用替换为此版本推荐的
+                notificationTime = Game.GameTime + 1500
+                Return
             End If
 
+            If notificationTime > 0 AndAlso Game.GameTime >= notificationTime Then
+                notificationTime = 0                                                  '防止重复
+                UI.Notification.PostTicker("~g~DERRA Extension 已激活", True)
+            End If
 
         End Sub
 
